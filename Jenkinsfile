@@ -112,11 +112,6 @@ pipeline{
           when { expression {  params.action == 'create' } }
           steps{
             script{
-                artifactory_url="http://100.26.121.215:8081/artifactory/"
-                repository_path="example-repo-local/"
-                file_name="kubernetes-configmap-reload-0.0.1-SNAPSHOT.jar"
-                local_file_path="/var/lib/jenkins/workspace/java-3.0/target/kubernetes-configmap-reload-0.0.1-SNAPSHOT.jar"
-
                 // Upload file to Artifactory
                 sh "curl -X PUT -u admin:charan@Akash.98 -T /var/lib/jenkins/workspace/java/target/kubernetes-configmap-reload-0.0.1-SNAPSHOT.jar http://100.26.121.215:8082/artifactory/example-repo-local/kubernetes-configmap-reload-0.0.1-SNAPSHOT.jar"
                 }
