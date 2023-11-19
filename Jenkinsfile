@@ -117,12 +117,8 @@ pipeline{
                 file_name="kubernetes-configmap-reload-0.0.1-SNAPSHOT.jar"
                 local_file_path="/var/lib/jenkins/workspace/java-3.0/target/kubernetes-configmap-reload-0.0.1-SNAPSHOT.jar"
 
-                # Artifactory credentials
-                username="admin"
-                password="password"
-
                 # Upload file to Artifactory
-                curl -X PUT -u "${username}:${password}" -T "${local_file_path}" "${artifactory_url}/${repository_path}/${file_name}"
+                curl -X PUT -u admin:charan@Akash.98 -T "${local_file_path}" "${artifactory_url}/${repository_path}/${file_name}"
             }
           }
         }
