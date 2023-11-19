@@ -118,7 +118,8 @@ pipeline{
                 local_file_path="/var/lib/jenkins/workspace/java-3.0/target/kubernetes-configmap-reload-0.0.1-SNAPSHOT.jar"
 
                 // Upload file to Artifactory
-                sh "curl -X PUT -u admin:charan@Akash.98 -T /var/lib/jenkins/workspace/java-3.0/target/kubernetes-configmap-reload-0.0.1-SNAPSHOT.jar http://100.26.121.215:8082/artifactory/example-repo-local/kubernetes-configmap-reload-0.0.1-SNAPSHOT.jar"
+                sh "cd /var/lib/jenkins/workspace/java-3.0/target/"
+                sh "curl -X PUT -u admin:charan@Akash.98 -T kubernetes-configmap-reload-0.0.1-SNAPSHOT.jar http://100.26.121.215:8082/artifactory/example-repo-local/kubernetes-configmap-reload-0.0.1-SNAPSHOT.jar"
                 }
             }
         }
