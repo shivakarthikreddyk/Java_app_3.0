@@ -107,6 +107,24 @@ pipeline{
                    dockerImageCleanup("${params.ImageName}","${params.ImageTag}","${params.DockerHubUser}")
                }
             }
-        }      
+        }
+        stage ('Pushing Jar file to Jfrog'){
+          when { expression {  params.action == 'create' } }
+          steps{
+            script{
+                artifactory_url="http://100.26.121.215:8081/artifactory"
+                repository_path="example-repo-local"
+                file_name="kubernetes-configmap-reload-0.0.1-SNAPSHOT.jar"
+                local_file_path="/var/lib/jenkins/workspace/java-3.0/target/kubernetes-configmap-reload-0.0.1-SNAPSHOT.jar"
+
+                # Artifactory credentials
+                username="admin"
+                password="password"
+
+                # Upload file to Artifactory
+                curl -X PUT -u "${username}:${password}" -T "${local_file_path}" "${artifactory_url}/${repository_path}/${file_name}"
+            }
+          }
+        }
     }
 }
