@@ -95,7 +95,7 @@ pipeline{
           steps{
             script{
                 // Upload file to Artifactory
-                sh "curl -X PUT -u admin:password -T /var/lib/jenkins/workspace/java-3.0/target/kubernetes-configmap-reload-0.0.1-SNAPSHOT.jar http://100.26.121.215:8082/artifactory/example-repo-local/kubernetes-configmap-reload-0.0.1-SNAPSHOT.jar"
+                sh "curl -X PUT -u admin:charan@Akash.98 -T /var/lib/jenkins/workspace/java-3.0/target/kubernetes-configmap-reload-0.0.1-SNAPSHOT.jar http://100.26.121.215:8082/artifactory/example-repo-local/kubernetes-configmap-reload-0.0.1-SNAPSHOT.jar"
                 }
             }
         }
