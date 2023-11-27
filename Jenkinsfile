@@ -90,14 +90,6 @@ pipeline{
                }
             }
         }
-        stage ('Jfrog Start'){
-          when { expression {  params.action == 'create' } }
-          steps{
-            script{
-                jfBuild()
-                }
-            }
-        }
         stage ('Pushing Jfrog File'){
           when { expression {  params.action == 'create' } }
           steps{
