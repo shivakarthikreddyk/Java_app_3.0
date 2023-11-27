@@ -90,12 +90,19 @@ pipeline{
                }
             }
         }
-        stage ('Pushing Jar file to Jfrog'){
+        stage ('Jfrog Start'){
           when { expression {  params.action == 'create' } }
           steps{
             script{
-                // Upload file to Artifactory
-                sh "curl -X PUT -u admin:charan@Akash.98 -T /var/lib/jenkins/workspace/java-3.0/target/kubernetes-configmap-reload-0.0.1-SNAPSHOT.jar http://35.171.28.175:8082/artifactory/example-repo-local/kubernetes-configmap-reload-0.0.1-SNAPSHOT.jar"
+                jfBuild()
+                }
+            }
+        }
+        stage ('Pushing Jfrog File'){
+          when { expression {  params.action == 'create' } }
+          steps{
+            script{
+                jfPush()
                 }
             }
         }
